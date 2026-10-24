@@ -1,0 +1,65 @@
+
+abstract class Coffee {
+  String name;
+  double price;
+
+  Coffee(this.name, this.price);
+
+  void showDetails() {
+    print('Coffee: $name');
+    print('Price: PHP ${price.toStringAsFixed(2)}');
+  }
+
+  void prepare();
+}
+
+class Latte extends Coffee {
+  Latte() : super('Latte', 159.00);
+
+  @override
+  void prepare() {
+    print('Preparing Latte with steamed milk.');
+  }
+}
+
+class Cappuccino extends Coffee {
+  Cappuccino() : super('Cappuccino', 120.00);
+
+  @override
+  void prepare() {
+    print('Preparing Cappuccino with milk foam.');
+  }
+}
+
+mixin Discount {
+  void applyDiscount() {
+    print('Customer received a 15% discount!');
+  }
+}
+
+class CustomerRewards with Discount {
+  void showRewards() {
+    print('Welcome To Mk Coffe Shop!');
+  }
+}
+
+void main() {
+  Coffee latte = Latte();
+  Coffee cappuccino = Cappuccino();
+  CustomerRewards rewards = CustomerRewards();
+
+  print(' COFFEE SHOP MANAGEMENT SYSTEM ');
+
+  latte.showDetails();
+  latte.prepare();
+
+  print('');
+
+  cappuccino.showDetails();
+  cappuccino.prepare();
+
+  print('\n CUSTOMER REWARDS ');
+
+  rewards.showRewards();
+  rewards.applyDiscount();
+}
